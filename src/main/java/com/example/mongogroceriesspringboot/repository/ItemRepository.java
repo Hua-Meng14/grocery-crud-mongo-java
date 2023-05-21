@@ -14,4 +14,6 @@ public interface ItemRepository extends MongoRepository<GroceryItem, String> {
     List<GroceryItem> findAll(String category);
 
     public long count();
+
+    List<GroceryItem> findAllByCategory(String category);
 }
