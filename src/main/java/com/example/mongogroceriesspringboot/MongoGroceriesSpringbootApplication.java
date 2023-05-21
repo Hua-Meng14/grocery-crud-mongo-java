@@ -29,20 +29,20 @@ public class MongoGroceriesSpringbootApplication implements CommandLineRunner {
 		System.out.println("-------------SHOW ALL GROCERY ITEMS-------------------------------\n");
 		showAllGroceryItemByName();
 
-//		System.out.println("-------------GET ITEM BY NAME -------------------------------\n");
-//		getGroceryItemByName("Whole Wheat Biscuit");
-//
-//		System.out.println("-------------GET ITEMS BY CATEGORY-------------------------------\n");
-//		getItemByCategory("millets");
-//
-//		System.out.println("-------------UPDATE CATEGORY NAME OF SNACKS CATEGORY-------------------------------\n");
-//		updateCategoryName("snacks");
-//
-//		System.out.println("-------------DELETE A GROCERY ITEMS-------------------------------\n");
-//		deleteCroceryItem("Kodo Millet");
-//
-//		System.out.println("-------------FINAL COUNT OF GROCERY ITEMS-------------------------------\n");
-//		findCountOfGroceryItems();
+		System.out.println("-------------GET ITEM BY NAME -------------------------------\n");
+		getGroceryItemByName("Whole Wheat Biscuit");
+
+		System.out.println("-------------GET ITEMS BY CATEGORY-------------------------------\n");
+		getItemByCategory("millets");
+
+		System.out.println("-------------UPDATE CATEGORY NAME OF SNACKS CATEGORY-------------------------------\n");
+		updateCategoryName("snacks");
+
+		System.out.println("-------------DELETE A GROCERY ITEMS-------------------------------\n");
+		deleteCroceryItem("Kodo Millet");
+
+		System.out.println("-------------FINAL COUNT OF GROCERY ITEMS-------------------------------\n");
+		findCountOfGroceryItems();
 
 		System.out.println("-------------THANK YOU-------------------------------\n");
 	}
@@ -58,45 +58,45 @@ public class MongoGroceriesSpringbootApplication implements CommandLineRunner {
 	}
 
 	public void showAllGroceryItemByName() {
-		groceryItemRepo.findAll().forEach(item -> System.out.println("Item: "+ item));
+		groceryItemRepo.findAll().forEach(item -> System.out.println("Item: "+ item.getName()));
 	}
 
-//	public void getGroceryItemByName(String name) {
-//		System.out.println("Getting item by name: "+ name);
-//		GroceryItem item = groceryItemRepo.findItemByName(name);
-//		System.out.println(getItemDetails(item));
-//	}
-//
-//	public void getItemByCategory(String category) {
-//		System.out.println("Getting items for the category " + category);
-//		List<GroceryItem> list = groceryItemRepo.findAll(category);
-//		list.forEach(item -> System.out.println("Name: " + item.getName() + ", Quantity: "+item.getQuantity()));
-//	}
-//
-//	public void findCountOfGroceryItems(){
-//		long count = groceryItemRepo.count();
-//		System.out.println("Number of documents in the collection: "+ count);
-//	}
-//
-//	public  String getItemDetails(GroceryItem item) {
-//		System.out.println("Item Name: "+ item.getName() + ", \nQuantity: "+ item.getQuantity()+ ", \nItem Category: "+item.getCategory());
-//		return "";
-//	}
-//
-//	public  void updateCategoryName(String category) {
-//		String newCategory = "munchies";
-//
-//		List<GroceryItem> list = groceryItemRepo.findAll(category);
-//		list.forEach(item ->
-//				item.setCategory(newCategory));
-//
-//		List<GroceryItem> itemsUpdated = groceryItemRepo.saveAll(list);
-//		if(itemsUpdated != null) System.out.println("Successfully updated "+ itemsUpdated.size() + " items.");
-//	}
-//
-//	public void deleteCroceryItem(String id) {
-//		groceryItemRepo.deleteById(id);
-//		System.out.println("Item with id "+ id + "deleted....");
-//	}
+	public void getGroceryItemByName(String name) {
+		System.out.println("Getting item by name: "+ name);
+		GroceryItem item = groceryItemRepo.findItemByName(name);
+		System.out.println(getItemDetails(item));
+	}
+
+	public void getItemByCategory(String category) {
+		System.out.println("Getting items for the category " + category);
+		List<GroceryItem> list = groceryItemRepo.findAll(category);
+		list.forEach(item -> System.out.println("Name: " + item.getName() + ", Quantity: "+item.getQuantity()));
+	}
+
+	public void findCountOfGroceryItems(){
+		long count = groceryItemRepo.count();
+		System.out.println("Number of documents in the collection: "+ count);
+	}
+
+	public  String getItemDetails(GroceryItem item) {
+		System.out.println("Item Name: "+ item.getName() + ", \nQuantity: "+ item.getQuantity()+ ", \nItem Category: "+item.getCategory());
+		return "";
+	}
+
+	public  void updateCategoryName(String category) {
+		String newCategory = "munchies";
+
+		List<GroceryItem> list = groceryItemRepo.findAll(category);
+		list.forEach(item ->
+				item.setCategory(newCategory));
+
+		List<GroceryItem> itemsUpdated = groceryItemRepo.saveAll(list);
+		if(itemsUpdated != null) System.out.println("Successfully updated "+ itemsUpdated.size() + " items.");
+	}
+
+	public void deleteCroceryItem(String id) {
+		groceryItemRepo.deleteById(id);
+		System.out.println("Item with id "+ id + "deleted....");
+	}
 
 }
