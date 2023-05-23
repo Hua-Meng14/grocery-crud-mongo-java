@@ -4,11 +4,13 @@ import com.example.mongogroceriesspringboot.model.GroceryItem;
 import com.example.mongogroceriesspringboot.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class GroceryItemService {
     private final ItemRepository groceryItemRepo;
 
@@ -67,11 +69,20 @@ public class GroceryItemService {
         }
     }
 
-    public void deleteGroceryItem(String id) {
+    public void deleteGroceryItem(String name) {
+
         try {
-            groceryItemRepo.deleteById(id);
+            Optional<GroceryItem> optionalItem = Optional.ofNullable(groceryItemRepo.findItemByName(name));
+            if (optionalItem.isPresent()) {
+                GroceryItem existingItem = optionalItem.get();
+                groceryItemRepo.delete(existingItem);
+            } else {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Grocery item not found for name: " + name);
+            }
+        } catch (ResponseStatusException e) {
+            throw e;
         } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error occurred while deleting grocery item.", e);
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error occurred while deleting grocery item: " + e);
         }
     }
 
