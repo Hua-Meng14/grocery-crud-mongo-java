@@ -1,0 +1,4 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://limhuameng19:HuaMengLim087@cluster0.sthqhln.mongodb.net/mygrocerylist?retryWrites=true&w=majority

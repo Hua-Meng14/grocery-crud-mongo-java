@@ -1,8 +1,8 @@
 package com.example.mongogroceriesspringboot.model;
 
-import lombok.AllArgsConstructor;
+//import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+//import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -20,9 +20,9 @@ public class GroceryItem {
     private int quantity;
     private String category;
 
-    public GroceryItem() {
-        // Default constructor with no arguments
-    }
+//    public GroceryItem() {
+//        // Default constructor with no arguments
+//    }
 
     public GroceryItem(String id ,String name, int quantity, String category) {
         this.id = id;
@@ -47,8 +47,17 @@ public class GroceryItem {
         this.category = category;
     }
 
-    public String getId() {
-        return id;
+    public void setName(String name) {
+        this.name = name;
     }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+
+//    public String getId() {
+//        return id;
+//    }
 
 }
