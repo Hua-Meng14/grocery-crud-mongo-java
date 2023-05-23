@@ -30,8 +30,8 @@ public class GroceryItemController {
         return groceryItemService.getGroceryItemByName(name);
     }
 
-    @PutMapping("/{name}/category")
-    public  GroceryItem updateGroceryItemByName(@PathVariable String name, @RequestBody GroceryItem item) {
+    @PutMapping("/{name}")
+    public  GroceryItem updateGroceryItemByName(@PathVariable("name") String name, @RequestBody GroceryItem item) {
         return groceryItemService.updateGroceryItem(name, item);
     }
 
