@@ -2,6 +2,7 @@ package com.example.mongogroceriesspringboot.controller;
 
 
 import com.example.mongogroceriesspringboot.model.GroceryItem;
+import com.example.mongogroceriesspringboot.service.GroceryItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,8 +31,8 @@ public class GroceryItemController {
     }
 
     @PutMapping("/{name}/category")
-    public  GroceryItem updateItemCategory(@PathVariable String name, @RequestParam String category) {
-        return groceryItemService.updateItemCategory(name, category);
+    public  GroceryItem updateGroceryItemByName(@PathVariable String name, @RequestBody GroceryItem item) {
+        return groceryItemService.updateGroceryItem(name, item);
     }
 
     @DeleteMapping("/{id}")
